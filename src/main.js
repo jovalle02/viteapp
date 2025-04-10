@@ -1,6 +1,12 @@
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import gsap from 'gsap';
+import VideogameSrc from '../public/Videogame.glb?url';
+import BriefcaseSrc from '../public/Briefcase.glb?url';
+import CampfireSrc from '../public/Campfire.glb?url';
+import R2D2Src from '../public/R2-D2.glb?url';
+import TrophySrc from '../public/Trophy.glb?url';
+import BookstackSrc from '../public/Bookstack.glb?url';
 import { cameraPosition } from 'three/tsl';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
@@ -297,9 +303,9 @@ const loadModel = (targetId, path, options = {}) => {
 
 
 
-loadModel("icon-1", "public/Videogame.glb");
-loadModel("icon-2", "public/Briefcase.glb", {scale: 2});
-loadModel("icon-3", "public/Bookstack.glb", {cameraPos: {x:0,y:0,z:14}, scale:8});
-loadModel("icon-4", "public/Campfire.glb", {cameraPos: {x:0,y:0,z:25}, scale: 6});
-loadModel("icon-5", "public/Trophy.glb", {cameraPos: {x:0,y:3,z:10}, scale: 20});
-loadModel("icon-6", "public/R2-D2.glb", {cameraPos: {x:0,y:0,z:20}, scale: 10, rotationY: -Math.PI/5,});
+loadModel("icon-1", VideogameSrc);
+loadModel("icon-2", BriefcaseSrc, {scale: 2});
+loadModel("icon-3", BookstackSrc, {cameraPos: {x:0,y:0,z:14}, scale:8});
+loadModel("icon-4", CampfireSrc, {cameraPos: {x:0,y:0,z:25}, scale: 6});
+loadModel("icon-5", TrophySrc, {cameraPos: {x:0,y:3,z:10}, scale: 20});
+loadModel("icon-6", R2D2Src, {cameraPos: {x:0,y:0,z:20}, scale: 10, rotationY: -Math.PI/5,});
