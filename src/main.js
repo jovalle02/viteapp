@@ -297,9 +297,9 @@ const loadModel = (targetId, path, options = {}) => {
 
 
 
-loadModel("icon-1", "src/models/Videogame.glb");
-loadModel("icon-2", "src/models/Briefcase.glb", {scale: 2});
-loadModel("icon-3", "src/models/Bookstack.glb", {cameraPos: {x:0,y:0,z:14}, scale:8});
-loadModel("icon-4", "src/models/Campfire.glb", {cameraPos: {x:0,y:0,z:25}, scale: 6});
-loadModel("icon-5", "src/models/Trophy.glb", {cameraPos: {x:0,y:3,z:10}, scale: 20});
-loadModel("icon-6", "src/models/R2-D2.glb", {cameraPos: {x:0,y:0,z:20}, scale: 10, rotationY: -Math.PI/5,});
+loadModel("icon-1", "public/Videogame.glb");
+loadModel("icon-2", "public/Briefcase.glb", {scale: 2});
+loadModel("icon-3", "public/Bookstack.glb", {cameraPos: {x:0,y:0,z:14}, scale:8});
+loadModel("icon-4", "public/Campfire.glb", {cameraPos: {x:0,y:0,z:25}, scale: 6});
+loadModel("icon-5", "public/Trophy.glb", {cameraPos: {x:0,y:3,z:10}, scale: 20});
+loadModel("icon-6", "public/R2-D2.glb", {cameraPos: {x:0,y:0,z:20}, scale: 10, rotationY: -Math.PI/5,});
