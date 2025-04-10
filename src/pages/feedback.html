@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Inteligente | DebugU</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .feedback-hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .feedback-demo {
+            display: flex;
+            gap: 40px;
+            max-width: 1200px;
+            margin: 60px auto;
+        }
+        
+        .code-editor {
+            flex: 1;
+            background: var(--dark);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .editor-header {
+            background: var(--dark-gray);
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .editor-button {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        
+        .editor-button.red { background: #ff5f56; }
+        .editor-button.yellow { background: #ffbd2e; }
+        .editor-button.green { background: #27c93f; }
+        
+        .editor-title {
+            color: var(--medium-gray);
+            font-size: 0.9rem;
+        }
+        
+        .code-container {
+            padding: 20px;
+            font-family: 'JetBrains Mono', monospace;
+            color: white;
+            line-height: 1.5;
+        }
+        
+        .code-line {
+            margin-bottom: 5px;
+        }
+        
+        .code-line.error {
+            color: #ff5370;
+            position: relative;
+        }
+        
+        .code-line.error::after {
+            content: '← ' attr(data-error);
+            position: absolute;
+            right: 0;
+            color: #ff5370;
+            font-size: 0.8rem;
+        }
+        
+        .code-line.success {
+            color: var(--primary-light);
+        }
+        
+        .feedback-panel {
+            flex: 1;
+            background: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid rgba(0,0,0,0.05);
+            align-self: flex-start;
+        }
+        
+        .feedback-item {
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--light-gray);
+        }
+        
+        .feedback-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .feedback-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .feedback-icon {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        
+        .feedback-icon.error {
+            background: rgba(255, 82, 82, 0.1);
+            color: var(--primary-dark);
+        }
+        
+        .feedback-icon.success {
+            background: rgba(76, 175, 80, 0.1);
+            color: var(--secondary-dark);
+        }
+        
+        .feedback-icon.suggestion {
+            background: rgba(41, 98, 255, 0.1);
+            color: var(--primary);
+        }
+        
+        .feedback-title {
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        .feedback-content {
+            color: var(--dark-gray);
+            margin-left: 40px;
+            line-height: 1.6;
+        }
+        
+        .feedback-code {
+            font-family: 'JetBrains Mono', monospace;
+            background: var(--light);
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-size: 0.9rem;
+            color: var(--dark);
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 60px 0;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid rgba(0,0,0,0.05);
+            transition: var(--transition);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--light);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            color: var(--primary);
+            font-size: 1.5rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .feature-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        .feature-card p {
+            color: var(--medium-gray);
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo-container">
+                    <a href="/index.html" style="text-decoration: none;"><div class="logo">Debug<span>U</span></div></a>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="../index.html#features">Características</a></li>
+                    <li><a href="../index.html#how-it-works">Cómo funciona</a></li>
+                    <li><a href="../index.html#faq">Preguntas</a></li>
+                    <li><a href="../index.html#testimonials">Testimonios</a></li>
+                    <li><a href="#" class="btn btn-outline">Iniciar sesión</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="feedback-hero">
+        <div class="container">
+            <h1>Feedback Inteligente</h1>
+            <p>Recibe retroalimentación inmediata y personalizada sobre tu código</p>
+        </div>
+    </section>
+
+    <section class="container">
+        <div class="feedback-demo">
+            <div class="code-editor">
+                <div class="editor-header">
+                    <div class="editor-button red"></div>
+                    <div class="editor-button yellow"></div>
+                    <div class="editor-button green"></div>
+                    <div class="editor-title">calculadora.py</div>
+                </div>
+                <div class="code-container">
+                    <div class="code-line">def suma(a, b):</div>
+                    <div class="code-line success">    return a + b</div>
+                    <div class="code-line"><br></div>
+                    <div class="code-line">def resta(a, b):</div>
+                    <div class="code-line success">    return a - b</div>
+                    <div class="code-line"><br></div>
+                    <div class="code-line">def multiplicacion(a, b):</div>
+                    <div class="code-line error" data-error="Falta el operador *">    return a x b</div>
+                    <div class="code-line"><br></div>
+                    <div class="code-line">def division(a, b):</div>
+                    <div class="code-line error" data-error="No manejas división por cero">    return a / b</div>
+                </div>
+            </div>
+            
+            <div class="feedback-panel">
+                <h2>Retroalimentación</h2>
+                <div class="feedback-item">
+                    <div class="feedback-header">
+                        <div class="feedback-icon error"><i class="fas fa-times"></i></div>
+                        <div class="feedback-title">Error de sintaxis</div>
+                    </div>
+                    <div class="feedback-content">
+                        <p>En la línea 9, estás usando <span class="feedback-code">x</span> como operador de multiplicación. En Python, el operador de multiplicación es <span class="feedback-code">*</span>.</p>
+                        <p><strong>Solución:</strong> Cambia <span class="feedback-code">a x b</span> por <span class="feedback-code">a * b</span></p>
+                    </div>
+                </div>
+                
+                <div class="feedback-item">
+                    <div class="feedback-header">
+                        <div class="feedback-icon suggestion"><i class="fas fa-lightbulb"></i></div>
+                        <div class="feedback-title">Mejora sugerida</div>
+                    </div>
+                    <div class="feedback-content">
+                        <p>En la línea 12, la función de división no maneja el caso cuando <span class="feedback-code">b</span> es cero, lo que causará un error.</p>
+                        <p><strong>Solución:</strong> Considera agregar una verificación:</p>
+                        <div class="feedback-code" style="display: block; margin-top: 10px; padding: 10px; background: var(--light); border-radius: 6px;">
+                            if b == 0:<br>
+                            &nbsp;&nbsp;return "Error: división por cero"<br>
+                            return a / b
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="feedback-item">
+                    <div class="feedback-header">
+                        <div class="feedback-icon success"><i class="fas fa-check"></i></div>
+                        <div class="feedback-title">Buen trabajo</div>
+                    </div>
+                    <div class="feedback-content">
+                        <p>Las funciones <span class="feedback-code">suma()</span> y <span class="feedback-code">resta()</span> están correctamente implementadas.</p>
+                        <p><strong>Siguiente paso:</strong> Intenta agregar una función para potencias usando <span class="feedback-code">**</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2 style="text-align: center; margin-bottom: 30px;">Cómo nuestro feedback te ayuda a mejorar</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-bolt"></i></div>
+                <h3>Instantáneo</h3>
+                <p>Recibe retroalimentación en tiempo real mientras escribes código, sin necesidad de esperar.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-graduation-cap"></i></div>
+                <h3>Educativo</h3>
+                <p>No solo señala errores, sino que explica por qué son problemas y cómo solucionarlos.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-user-cog"></i></div>
+                <h3>Personalizado</h3>
+                <p>Se adapta a tu nivel de experiencia, proporcionando ayuda adecuada a tus conocimientos.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <div class="container">
+            <h2>Experimenta el poder del feedback inteligente</h2>
+            <p>Regístrate ahora y comienza a recibir retroalimentación inmediata sobre tu código.</p>
+            <div class="cta-buttons">
+                <a href="#" class="btn btn-light">Crear cuenta gratis</a>
+                <a href="ejemplos.html" class="btn btn-transparent">Ver más ejemplos</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-wave">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+            </svg>
+        </div>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <div class="footer-logo">
+                        <div class="footer-logo-text">Debug<span>U</span></div>
+                    </div>
+                    <p>La plataforma gamificada para aprender Python de manera efectiva y divertida.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Producto</h3>
+                    <ul class="footer-links">
+                        <li><a href="../index.html#features"><i class="fas fa-chevron-right"></i> Características</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Precios</a></li>
+                        <li><a href="ejemplos.html"><i class="fas fa-chevron-right"></i> Ejemplos</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Demo</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Recursos</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Blog</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Tutoriales</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Comunidad</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Legal</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Términos</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Privacidad</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 DebugU. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

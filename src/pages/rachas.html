@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rachas de Aprendizaje | DebugU</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .streak-hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .streak-container {
+            max-width: 800px;
+            margin: 50px auto;
+            text-align: center;
+        }
+        
+        .streak-display {
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: var(--shadow-md);
+            margin-bottom: 40px;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .streak-count {
+            font-size: 5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 20px 0;
+            font-family: 'JetBrains Mono', monospace;
+        }
+        
+        .streak-label {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+        
+        .calendar {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 10px;
+            margin: 30px 0;
+        }
+        
+        .day {
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            font-weight: 700;
+            background: var(--light);
+            color: var(--medium-gray);
+        }
+        
+        .day.active {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .day.today {
+            border: 2px solid var(--accent);
+        }
+        
+        .rewards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+        
+        .reward-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: var(--shadow-sm);
+            text-align: center;
+            border: 1px solid rgba(0,0,0,0.05);
+            transition: var(--transition);
+        }
+        
+        .reward-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .reward-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .reward-card h3 {
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+        
+        .reward-card p {
+            color: var(--medium-gray);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo-container">
+                    <a href="/index.html" style="text-decoration: none;"><div class="logo">Debug<span>U</span></div></a>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="../index.html#features">Características</a></li>
+                    <li><a href="../index.html#how-it-works">Cómo funciona</a></li>
+                    <li><a href="../index.html#faq">Preguntas</a></li>
+                    <li><a href="../index.html#testimonials">Testimonios</a></li>
+                    <li><a href="#" class="btn btn-outline">Iniciar sesión</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="streak-hero">
+        <div class="container">
+            <h1>Rachas de Aprendizaje</h1>
+            <p>Mantén tu motivación y gana recompensas por aprender consistentemente</p>
+        </div>
+    </section>
+
+    <section class="container">
+        <div class="streak-container">
+            <div class="streak-display">
+                <h2>Tu racha actual</h2>
+                <div class="streak-count">7</div>
+                <p class="streak-label">días consecutivos</p>
+                <p>¡Sigue así! Mañana ganarás 50 XP extra</p>
+                
+                <div class="calendar">
+                    <div class="day">L</div>
+                    <div class="day">M</div>
+                    <div class="day">X</div>
+                    <div class="day">J</div>
+                    <div class="day active">V</div>
+                    <div class="day active">S</div>
+                    <div class="day active today">D</div>
+                    <div class="day active">1</div>
+                    <div class="day active">2</div>
+                    <div class="day active">3</div>
+                    <div class="day active">4</div>
+                    <div class="day">5</div>
+                    <div class="day">6</div>
+                    <div class="day">7</div>
+                </div>
+            </div>
+
+            <h2>Tus próximas recompensas</h2>
+            <div class="rewards-container">
+                <div class="reward-card">
+                    <div class="reward-icon"><i class="fas fa-medal"></i></div>
+                    <h3>Racha de 14 días</h3>
+                    <p>Desbloquea la medalla "Consistente" y 200 XP</p>
+                </div>
+                <div class="reward-card">
+                    <div class="reward-icon"><i class="fas fa-bolt"></i></div>
+                    <h3>Racha de 21 días</h3>
+                    <p>Multiplicador de XP 1.5x por una semana</p>
+                </div>
+                <div class="reward-card">
+                    <div class="reward-icon"><i class="fas fa-trophy"></i></div>
+                    <h3>Racha de 30 días</h3>
+                    <p>Medalla "Maestro de la Constancia" y 500 XP</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <div class="container">
+            <h2>Mantén tu racha viva</h2>
+            <p>Completa una lección hoy para no perder tu progreso.</p>
+            <div class="cta-buttons">
+                <a href="lecciones.html" class="btn btn-light">Continuar aprendiendo</a>
+                <a href="#" class="btn btn-transparent">Configurar recordatorios</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-wave">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+            </svg>
+        </div>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <div class="footer-logo">
+                        <img src="../img/udebug.png" alt="DebugU Logo" class="footer-logo-img">
+                        <div class="footer-logo-text">Debug<span>U</span></div>
+                    </div>
+                    <p>La plataforma gamificada para aprender Python de manera efectiva y divertida.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Producto</h3>
+                    <ul class="footer-links">
+                        <li><a href="../index.html#features"><i class="fas fa-chevron-right"></i> Características</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Precios</a></li>
+                        <li><a href="ejemplos.html"><i class="fas fa-chevron-right"></i> Ejemplos</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Demo</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Roadmap</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Recursos</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Blog</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Tutoriales</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Documentación</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Comunidad</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Webinars</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Empresa</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Sobre nosotros</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Equipo</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Carreras</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Contacto</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Prensa</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Legal</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Términos</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Privacidad</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Cookies</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Licencias</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Seguridad</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 DebugU. Todos los derechos reservados. | <a href="#">Términos</a> | <a href="#">Privacidad</a> | <a href="#">Política de cookies</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>
