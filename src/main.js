@@ -261,10 +261,10 @@ const loadModel = (targetId, path, options = {}) => {
   camera.position.set(cam.x, cam.y, cam.z);
 
   // Luces
-  const light = new THREE.DirectionalLight(0xffffff, 1.9);
+  const light = new THREE.DirectionalLight(0xffffff, 0.35);
   light.position.set(2, 3, 4);
   scene.add(light);
-  scene.add(new THREE.AmbientLight(0xffffff, 1));
+  scene.add(new THREE.AmbientLight(0xffffff, 0.6));
 
   // Sombra en el piso
   const shadowPlane = new THREE.Mesh(
