@@ -375,101 +375,107 @@
     <section class="beta-signup" id="beta-signup" aria-labelledby="beta-signup-heading">
         <div class="container">
           <h2 id="beta-signup-heading" class="fade-in">¿Quieres unirte a la beta de DebugU?</h2>
-          <p class="fade-in delay-1">Déjanos tu correo y serás uno de los primeros en recibir acceso exclusivo a nuestra plataforma gamificada para aprender Python.</p>
-          
+          <p class="fade-in delay-1">Déjanos tu correo y serás uno de los primeros en recibir acceso exclusivo.</p>
+      
+          <!-- Formulario profesional con FormSubmit -->
           <form 
-            class="beta-form fade-in delay-2" 
             id="betaForm"
+            action="https://formsubmit.co/tu-email@debugu.com" 
+            method="POST"
+            class="beta-form fade-in delay-2"
             novalidate
-            aria-label="Formulario de registro para beta de DebugU"
+            aria-label="Formulario de registro para beta"
           >
+            <!-- Campo de Email con Validación -->
             <div class="form-group">
               <label for="userEmail" class="visually-hidden">Correo electrónico</label>
               <input 
                 type="email" 
-                id="userEmail" 
-                name="userEmail"
-                placeholder="Tu correo electrónico" 
+                id="userEmail"
+                name="email"
+                placeholder="tu@correo.com"
                 required
                 pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
-                title="Por favor ingresa un correo válido (ejemplo: usuario@dominio.com)"
                 aria-required="true"
               >
               <span class="validation-message" aria-live="polite"></span>
             </div>
-            
-            <button type="submit" class="btn" aria-label="Enviar solicitud para unirse a la beta">
-              <i class="fas fa-paper-plane" aria-hidden="true"></i> 
+      
+            <!-- Campos Ocultos para Configuración Profesional -->
+            <input type="hidden" name="_subject" value="🔥 Nuevo registro en DebugU Beta">
+            <input type="hidden" name="_autoresponse" value="¡Gracias por unirte a la beta de DebugU! Estamos revisando tu solicitud y te notificaremos cuando tu acceso esté listo. - Equipo DebugU">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_next" value="https://debugu.com/gracias.html">
+            <input type="hidden" name="_honey" value="">
+      
+            <!-- Botón de Envío con Estados -->
+            <button 
+              type="submit" 
+              class="btn"
+              aria-live="polite"
+              data-submit-text="Unirme a la beta"
+              data-loading-text="Enviando..."
+            >
+              <i class="fas fa-paper-plane" aria-hidden="true"></i>
               <span>Unirme a la beta</span>
             </button>
           </form>
         </div>
       </section>
       
-      <script type="module">
+      <!-- CSS para Validación -->
+      <style>
+        [aria-invalid="true"] {
+          border-color: #ff4444;
+          box-shadow: 0 0 0 2px rgba(255, 68, 68, 0.2);
+        }
+        .validation-message {
+          color: #ff4444;
+          font-size: 0.85em;
+          margin-top: 0.25rem;
+        }
+        [data-loading] button {
+          opacity: 0.7;
+          cursor: not-allowed;
+        }
+      </style>
+      
+      <!-- JavaScript Profesional sin Dependencias -->
+      <script>
         document.addEventListener('DOMContentLoaded', () => {
           const form = document.getElementById('betaForm');
           const emailInput = document.getElementById('userEmail');
           const validationMessage = form.querySelector('.validation-message');
+          const submitBtn = form.querySelector('button[type="submit"]');
+          const originalBtnText = submitBtn.innerHTML;
       
-          // Validación en tiempo real
+          // Validación en Tiempo Real
           emailInput.addEventListener('input', () => {
-            if (emailInput.validity.valid) {
-              emailInput.classList.remove('invalid');
-              validationMessage.textContent = '';
-            }
+            emailInput.setAttribute('aria-invalid', !emailInput.validity.valid);
+            validationMessage.textContent = emailInput.validity.valid ? '' : 'Ingresa un correo válido (ej: usuario@dominio.com)';
           });
       
-          // Envío profesional
-          form.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            
-            // Validación
+          // Interceptar envío para UX
+          form.addEventListener('submit', (e) => {
             if (!form.checkValidity()) {
-              emailInput.classList.add('invalid');
-              validationMessage.textContent = 'Por favor ingresa un correo válido (ejemplo: usuario@dominio.com)';
+              e.preventDefault();
               emailInput.focus();
+              emailInput.setAttribute('aria-invalid', 'true');
+              validationMessage.textContent = 'Por favor corrige este campo';
               return;
             }
       
-            try {
-              // Feedback visual durante envío
-              const submitButton = form.querySelector('button[type="submit"]');
-              submitButton.disabled = true;
-              submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Procesando...';
+            // Feedback visual
+            submitBtn.innerHTML = `
+              <i class="fas fa-spinner fa-spin" aria-hidden="true"></i>
+              <span>Enviando...</span>
+            `;
+            submitBtn.disabled = true;
+            form.setAttribute('data-loading', 'true');
       
-              // Simulación de envío a backend (reemplaza con tu API real)
-              const response = await mockApiCall(emailInput.value);
-      
-              // Éxito
-              form.innerHTML = `
-                <div class="success-message" role="alert">
-                  <i class="fas fa-check-circle"></i>
-                  <h3>¡Gracias por unirte!</h3>
-                  <p>Te hemos enviado un correo a <strong>${emailInput.value}</strong> con los próximos pasos.</p>
-                </div>
-              `;
-      
-            } catch (error) {
-              // Manejo de errores
-              console.error('Error:', error);
-              validationMessage.textContent = 'Error al enviar. Por favor inténtalo más tarde.';
-              form.querySelector('button[type="submit"]').disabled = false;
-              form.querySelector('button[type="submit"]').innerHTML = '<i class="fas fa-paper-plane"></i> <span>Unirme a la beta</span>';
-            }
+            // Opcional: Prevenir envíos duplicados
+            form.addEventListener('submit', () => {}, { once: true });
           });
-      
-          // Simulador de API (elimínalo en producción)
-          async function mockApiCall(email) {
-            return new Promise((resolve, reject) => {
-              setTimeout(() => {
-                // Simula un 10% de error aleatorio para pruebas
-                Math.random() > 0.1 ? 
-                  resolve({ status: 200 }) : 
-                  reject(new Error('Error simulado del servidor'));
-              }, 1500);
-            });
-          }
         });
       </script>
 
