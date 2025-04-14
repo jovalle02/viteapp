@@ -130,10 +130,10 @@
                     <a href="/index.html" style="text-decoration: none;"><div class="logo">Debug<span>U</span></div></a>
                 </div>
                 <ul class="nav-links">
-                    <li><a href="../index.html#features">Características</a></li>
-                    <li><a href="../index.html#how-it-works">Cómo funciona</a></li>
-                    <li><a href="../index.html#faq">Preguntas</a></li>
-                    <li><a href="../index.html#testimonials">Testimonios</a></li>
+                    <li><a href="/index.html#features">Características</a></li>
+                    <li><a href="/index.html#how-it-works">Cómo funciona</a></li>
+                    <li><a href="/index.html#faq">Preguntas</a></li>
+                    <li><a href="/index.html#testimonials">Testimonios</a></li>
                     <li><a href="#" class="btn btn-outline">Iniciar sesión</a></li>
                 </ul>
             </nav>
@@ -237,65 +237,199 @@
             <h2>¿Listo para tu próximo proyecto?</h2>
             <p>Continúa tu viaje de aprendizaje y desbloquea nuevos desafíos.</p>
             <div class="cta-buttons">
-                <a href="../index.html#features" class="btn btn-light">Explorar proyectos</a>
+                <a href="/index.html#features" class="btn btn-light">Explorar proyectos</a>
                 <a href="#" class="btn btn-transparent">Ver mi progreso</a>
             </div>
         </div>
     </section>
-
-    <footer>
-        <div class="footer-wave">
-            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
-            </svg>
-        </div>
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-column">
-                    <div class="footer-logo">
-                        <img src="../img/udebug.png" alt="DebugU Logo" class="footer-logo-img">
-                        <div class="footer-logo-text">Debug<span>U</span></div>
-                    </div>
-                    <p>La plataforma gamificada para aprender Python de manera efectiva y divertida.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="footer-logo">
+                    <div class="footer-logo-text">Debug<span>U</span></div>
+                    <div class="mascot-animation">
+                        <div class="python-mascot"></div>
                     </div>
                 </div>
-                <div class="footer-column">
-                    <h3>Producto</h3>
-                    <ul class="footer-links">
-                        <li><a href="../index.html#features"><i class="fas fa-chevron-right"></i> Características</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Precios</a></li>
-                        <li><a href="ejemplos.html"><i class="fas fa-chevron-right"></i> Ejemplos</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Demo</a></li>
-                    </ul>
+                <p class="footer-tagline">Transformando el aprendizaje de Python en una aventura</p>
+            </div>
+            
+            <div class="footer-visuals">
+                <div class="code-snippet">
+                    <span class="code-line">>> print("¡Aprende con diversión!")</span>
+                    <span class="cursor-animation">|</span>
                 </div>
-                <div class="footer-column">
-                    <h3>Recursos</h3>
-                    <ul class="footer-links">
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Blog</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Tutoriales</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Comunidad</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Legal</h3>
-                    <ul class="footer-links">
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Términos</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Privacidad</a></li>
-                    </ul>
+                <div class="animated-icons">
+                    <div class="icon cpu"></div>
+                    <div class="icon code"></div>
+                    <div class="icon medal"></div>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>© 2023 DebugU. Todos los derechos reservados.</p>
+            
+            <div class="footer-legal">
+                <p class="copyright">© 2025 DebugU. Todos los derechos reservados.</p>
             </div>
         </div>
-    </footer>
+    </div>
+</footer>
 
-    <script src="../js/main.js"></script>
+<style>
+    /* Estilos base del footer */
+    footer {
+        background: #1a1e23;
+        color: #e0e0e0;
+        padding: 3rem 0;
+        overflow: hidden;
+        position: relative;
+    }
+    
+    .footer-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+        position: relative;
+        z-index: 2;
+    }
+    
+    /* Logo y mascota */
+    .footer-logo {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+    
+    .footer-logo-text {
+        font-size: 2rem;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+        background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+    
+    .mascot-animation {
+        width: 50px;
+        height: 50px;
+        position: relative;
+    }
+    
+    .python-mascot {
+        width: 100%;
+        height: 100%;
+        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="%234dabf7"/><circle cx="35" cy="40" r="8" fill="%23fff"/><circle cx="65" cy="40" r="8" fill="%23fff"/><path d="M30,65 Q50,75 70,65" stroke="%23fff" stroke-width="3" fill="none"/></svg>');
+        background-size: contain;
+        animation: bounce 2s infinite ease-in-out;
+    }
+    
+    /* Elementos visuales */
+    .footer-visuals {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+        margin: 1rem 0;
+    }
+    
+    .code-snippet {
+        background: rgba(0,0,0,0.3);
+        padding: 0.8rem 1.5rem;
+        border-radius: 8px;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.9rem;
+        position: relative;
+        border-left: 3px solid #4dabf7;
+    }
+    
+    .cursor-animation {
+        animation: blink 1s infinite;
+        color: #4dabf7;
+    }
+    
+    .animated-icons {
+        display: flex;
+        gap: 2rem;
+    }
+    
+    .icon {
+        width: 40px;
+        height: 40px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        opacity: 0.8;
+        transition: all 0.3s ease;
+    }
+    
+    .icon:hover {
+        transform: translateY(-5px);
+        opacity: 1;
+    }
+    
+    .cpu {
+        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="%234dabf7" viewBox="0 0 24 24"><path d="M4 4h16v16H4V4zm2 2v12h12V6H6zm3 2h6v6H9V8zm1 1v4h4V9h-4z"/></svg>');
+        animation: float 3s ease-in-out infinite;
+    }
+    
+    .code {
+        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="%2328a745" viewBox="0 0 24 24"><path d="M8 3l-6 9 6 9h3l-5-9 5-9H8zm8 0l6 9-6 9h-3l5-9-5-9h3z"/></svg>');
+        animation: float 3s ease-in-out infinite 0.5s;
+    }
+    
+    .medal {
+        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="%23ffd43b" viewBox="0 0 24 24"><path d="M12 2L8 7h8l-4-5zm0 7a3 3 0 110 6 3 3 0 010-6zm-7 5l4 5h6l4-5H5z"/></svg>');
+        animation: float 3s ease-in-out infinite 1s;
+    }
+    
+    /* Texto legal */
+    .footer-legal {
+        text-align: center;
+        margin-top: 1.5rem;
+        width: 100%;
+        border-top: 1px solid rgba(255,255,255,0.1);
+        padding-top: 1.5rem;
+    }
+    
+    .copyright {
+        font-size: 0.85rem;
+        opacity: 0.8;
+    }
+    
+    /* Animaciones */
+    @keyframes bounce {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+    }
+    
+    @keyframes blink {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0; }
+    }
+    
+    @keyframes float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-8px); }
+    }
+    
+    /* Efecto de partículas de fondo */
+    footer::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: radial-gradient(rgba(77, 171, 247, 0.1) 1px, transparent 1px);
+        background-size: 20px 20px;
+        z-index: 1;
+    }
+
+</style>
+    <script type="module" src="src/main.js"></script>
 </body>
 </html>
