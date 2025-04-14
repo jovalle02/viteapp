@@ -371,69 +371,207 @@
         </div>
     </section>
 
-
-<!-- FORMULARIO DEBUGU - VERSIÓN SIMPLIFICADA -->
-<section class="beta-signup">
-    <div class="container">
-      <h2>¿Quieres unirte a la beta?</h2>
+    <section class="beta-signup" id="beta-signup">
+        <div class="container">
+          <h2 class="section-title">¿Quieres unirte a la <span class="highlight">beta exclusiva</span> de DebugU?</h2>
+          <p class="section-subtitle">Regístrate ahora y sé de los primeros en acceder a nuestra plataforma gamificada para aprender Python.</p>
+          
+          <form 
+            class="signup-form"
+            action="https://formsubmit.co/estivensuarez2003@gmail.com" 
+            method="POST"
+          >
+            <div class="input-group">
+              <input 
+                type="email" 
+                name="email" 
+                placeholder="Ingresa tu mejor correo electrónico" 
+                required
+                aria-label="Correo electrónico"
+                class="form-input"
+              >
+              <button type="submit" class="cta-button pulse-on-hover">
+                <i class="fas fa-paper-plane"></i> 
+                <span>Obtener acceso</span>
+              </button>
+            </div>
       
-      <!-- FORMULARIO QUE ENVÍA DIRECTAMENTE A TU CORREO -->
-      <form 
-        action="https://formsubmit.co/estivensuarez2003@gmail.com" 
-        method="POST"
-      >
-        <!-- Campo de email (único campo obligatorio) -->
-        <input 
-          type="email" 
-          name="email" 
-          placeholder="tucorreo@gmail.com" 
-          required
-        >
-        
-        <!-- CONFIGURACIÓN DEL CORREO AUTOMÁTICO -->
-        <input type="hidden" name="_subject" value="¡Bienvenido a DebugU!">
-        <input type="hidden" name="_autoresponse" value="Hola futuro programador 👋
-  
-  ¡Gracias por unirte a la beta de DebugU!
-  
-  En 24 horas recibirás:
-  ✅ Tu acceso a la plataforma
-  ✅ 100 puntos de regalo
-  ✅ Guía de Python Básico
-  
-  Mientras tanto:
-  👉 Sigue nuestro Instagram @DebugU
-  👉 Únete al grupo de Telegram: t.me/debugu_comunidad
-  
-  ¡Nos vemos dentro!
-  Equipo DebugU 🐍">
-  
-        <!-- Botón de envío -->
-        <button type="submit">
-          <i class="fas fa-paper-plane"></i> Quiero mi acceso
-        </button>
-      </form>
-    </div>
-  </section>
-  
-
-  <style>
-    form {
-      display: flex;
-      gap: 10px;
-    }
-    input {
-      padding: 10px;
-      flex-grow: 1;
-    }
-    button {
-      background: #2b73b7;
-      color: white;
-      border: none;
-      padding: 0 20px;
-      cursor: pointer;
-    }
-  </style>
+            <!-- Configuración avanzada del correo -->
+            <input type="hidden" name="_subject" value="¡Bienvenido a DebugU!">
+            <input type="hidden" name="_autoresponse" value="Hola futuro programador 👋
+      
+      ¡Gracias por unirte a la beta de DebugU!
+      
+      En 24 horas recibirás:
+      ✅ Acceso prioritario a la plataforma
+      ✅ 100 puntos de experiencia iniciales
+      ✅ Guía 'Python en 7 días' (PDF adjunto)
+      
+      Prepárate para:
+      🐍 Aprender con desafíos diarios
+      🏆 Competir en nuestro ranking
+      🎯 Ganar insignias exclusivas
+      
+      ¡Nos vemos dentro!
+      Equipo DebugU 🚀">
+            <input type="hidden" name="_template" value="basic">
+            <input type="text" name="_honey" style="display:none">
+          </form>
+      
+          <p class="form-note">
+            <i class="fas fa-lock"></i> Respetamos tu privacidad. Nunca compartiremos tu email.
+          </p>
+        </div>
+      </section>
+      
+      <!-- Estilos profesionales -->
+      <style>
+        :root {
+          --primary-color: #4361ee;
+          --secondary-color: #3a0ca3;
+          --accent-color: #f72585;
+          --text-dark: #2b2d42;
+          --text-light: #8d99ae;
+          --light-bg: #f8f9fa;
+        }
+      
+        .beta-signup {
+          background: white;
+          border-radius: 16px;
+          padding: 2.5rem;
+          box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+          max-width: 680px;
+          margin: 0 auto;
+          border: 1px solid rgba(0,0,0,0.05);
+        }
+      
+        .section-title {
+          font-size: 2rem;
+          color: var(--text-dark);
+          margin-bottom: 1rem;
+          text-align: center;
+          line-height: 1.3;
+          font-weight: 700;
+        }
+      
+        .highlight {
+          color: var(--primary-color);
+          position: relative;
+          display: inline-block;
+        }
+      
+        .highlight::after {
+          content: '';
+          position: absolute;
+          bottom: 5px;
+          left: 0;
+          width: 100%;
+          height: 8px;
+          background-color: rgba(67, 97, 238, 0.2);
+          z-index: -1;
+          border-radius: 4px;
+        }
+      
+        .section-subtitle {
+          color: var(--text-light);
+          text-align: center;
+          margin-bottom: 2rem;
+          font-size: 1.1rem;
+          max-width: 500px;
+          margin-left: auto;
+          margin-right: auto;
+        }
+      
+        .signup-form {
+          margin: 0 auto;
+          max-width: 520px;
+        }
+      
+        .input-group {
+          display: flex;
+          gap: 12px;
+          margin-bottom: 1rem;
+        }
+      
+        .form-input {
+          flex: 1;
+          padding: 15px 20px;
+          border: 2px solid #e0e0e0;
+          border-radius: 8px;
+          font-size: 1rem;
+          transition: all 0.3s ease;
+          box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+      
+        .form-input:focus {
+          border-color: var(--primary-color);
+          outline: none;
+          box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+        }
+      
+        .cta-button {
+          background: var(--primary-color);
+          background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+          color: white;
+          border: none;
+          padding: 0 28px;
+          border-radius: 8px;
+          cursor: pointer;
+          font-weight: 600;
+          font-size: 1rem;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          transition: all 0.3s ease;
+          box-shadow: 0 4px 12px rgba(67, 97, 238, 0.25);
+        }
+      
+        .cta-button:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 6px 16px rgba(67, 97, 238, 0.3);
+        }
+      
+        .cta-button:active {
+          transform: translateY(0);
+        }
+      
+        .pulse-on-hover:hover {
+          animation: pulse 1.5s infinite;
+        }
+      
+        .form-note {
+          color: var(--text-light);
+          font-size: 0.85rem;
+          text-align: center;
+          margin-top: 1.5rem;
+        }
+      
+        .form-note i {
+          margin-right: 5px;
+          color: var(--primary-color);
+        }
+      
+        @keyframes pulse {
+          0% { transform: translateY(-2px) scale(1); }
+          50% { transform: translateY(-2px) scale(1.03); }
+          100% { transform: translateY(-2px) scale(1); }
+        }
+      
+        @media (max-width: 768px) {
+          .input-group {
+            flex-direction: column;
+          }
+          
+          .cta-button {
+            justify-content: center;
+            padding: 15px;
+          }
+          
+          .section-title {
+            font-size: 1.6rem;
+          }
+        }
+      </style>
 
 <!-- Footer -->
 <footer>
