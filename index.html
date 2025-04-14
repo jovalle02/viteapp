@@ -372,110 +372,83 @@
     </section>
 
 
-    <section class="beta-signup" id="beta-signup" aria-labelledby="beta-signup-heading">
+    <section class="beta-signup" id="beta-signup">
         <div class="container">
-          <h2 id="beta-signup-heading" class="fade-in">¿Quieres unirte a la beta de DebugU?</h2>
-          <p class="fade-in delay-1">Déjanos tu correo y serás uno de los primeros en recibir acceso exclusivo.</p>
-      
-          <!-- Formulario profesional con FormSubmit -->
+          <h2>¿Quieres unirte a la beta de DebugU?</h2>
+          <p>Déjanos tu correo y serás uno de los primeros en recibir acceso exclusivo.</p>
+          
           <form 
-            id="betaForm"
-            action="https://formsubmit.co/tu-email@debugu.com" 
+            action="https://formsubmit.co/estivensuarez2003@gmail.com" 
             method="POST"
-            class="beta-form fade-in delay-2"
-            novalidate
-            aria-label="Formulario de registro para beta"
           >
-            <!-- Campo de Email con Validación -->
-            <div class="form-group">
-              <label for="userEmail" class="visually-hidden">Correo electrónico</label>
-              <input 
-                type="email" 
-                id="userEmail"
-                name="email"
-                placeholder="tu@correo.com"
-                required
-                pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
-                aria-required="true"
-              >
-              <span class="validation-message" aria-live="polite"></span>
-            </div>
-      
-            <!-- Campos Ocultos para Configuración Profesional -->
-            <input type="hidden" name="_subject" value="🔥 Nuevo registro en DebugU Beta">
-            <input type="hidden" name="_autoresponse" value="¡Gracias por unirte a la beta de DebugU! Estamos revisando tu solicitud y te notificaremos cuando tu acceso esté listo. - Equipo DebugU">
-            <input type="hidden" name="_template" value="table">
-            <input type="hidden" name="_next" value="https://debugu.com/gracias.html">
-            <input type="hidden" name="_honey" value="">
-      
-            <!-- Botón de Envío con Estados -->
-            <button 
-              type="submit" 
-              class="btn"
-              aria-live="polite"
-              data-submit-text="Unirme a la beta"
-              data-loading-text="Enviando..."
+            <!-- Campo obligatorio -->
+            <input 
+              type="email" 
+              name="email" 
+              placeholder="tu@correo.com" 
+              required
+              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
             >
-              <i class="fas fa-paper-plane" aria-hidden="true"></i>
-              <span>Unirme a la beta</span>
+            
+            <!-- Configuración del correo -->
+            <input type="hidden" name="_subject" value="¡Nuevo registro en DebugU!">
+            <input type="hidden" name="_autoresponse" value="BIENVENIDO A DEBUGU
+      
+      Gracias por registrarte en nuestra beta. 
+      
+      Esto es lo que obtendrás:
+      - Acceso prioritario a la plataforma
+      - 100 puntos de experiencia iniciales
+
+      
+      Tu cuenta estará activa antes de 48 horas. 
+      
+      ¿Preguntas? Responde a este correo.
+      
+      Equipo DebugU">
+            <input type="hidden" name="_template" value="basic">
+            
+            <!-- Evita spam -->
+            <input type="text" name="_honey" style="display:none">
+            
+            <button type="submit">
+              <i class="fas fa-paper-plane"></i> Unirme a la beta
             </button>
           </form>
         </div>
       </section>
       
-      <!-- CSS para Validación -->
       <style>
-        [aria-invalid="true"] {
-          border-color: #ff4444;
-          box-shadow: 0 0 0 2px rgba(255, 68, 68, 0.2);
+        .beta-signup {
+          max-width: 500px;
+          margin: 0 auto;
+          padding: 20px;
+          text-align: center;
         }
-        .validation-message {
-          color: #ff4444;
-          font-size: 0.85em;
-          margin-top: 0.25rem;
+        
+        input[type="email"] {
+          width: 100%;
+          padding: 10px;
+          margin: 10px 0;
+          border: 1px solid #ddd;
         }
-        [data-loading] button {
-          opacity: 0.7;
-          cursor: not-allowed;
+        
+        button {
+          background: #2b73b7;
+          color: white;
+          border: none;
+          padding: 10px 20px;
+          cursor: pointer;
         }
       </style>
       
-      <!-- JavaScript Profesional sin Dependencias -->
       <script>
-        document.addEventListener('DOMContentLoaded', () => {
-          const form = document.getElementById('betaForm');
-          const emailInput = document.getElementById('userEmail');
-          const validationMessage = form.querySelector('.validation-message');
-          const submitBtn = form.querySelector('button[type="submit"]');
-          const originalBtnText = submitBtn.innerHTML;
-      
-          // Validación en Tiempo Real
-          emailInput.addEventListener('input', () => {
-            emailInput.setAttribute('aria-invalid', !emailInput.validity.valid);
-            validationMessage.textContent = emailInput.validity.valid ? '' : 'Ingresa un correo válido (ej: usuario@dominio.com)';
-          });
-      
-          // Interceptar envío para UX
-          form.addEventListener('submit', (e) => {
-            if (!form.checkValidity()) {
-              e.preventDefault();
-              emailInput.focus();
-              emailInput.setAttribute('aria-invalid', 'true');
-              validationMessage.textContent = 'Por favor corrige este campo';
-              return;
-            }
-      
-            // Feedback visual
-            submitBtn.innerHTML = `
-              <i class="fas fa-spinner fa-spin" aria-hidden="true"></i>
-              <span>Enviando...</span>
-            `;
-            submitBtn.disabled = true;
-            form.setAttribute('data-loading', 'true');
-      
-            // Opcional: Prevenir envíos duplicados
-            form.addEventListener('submit', () => {}, { once: true });
-          });
+
+        document.querySelector('form').addEventListener('submit', function(e) {
+          if (!this.checkValidity()) {
+            e.preventDefault();
+            alert('Por favor ingresa un correo válido');
+          }
         });
       </script>
 
