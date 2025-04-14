@@ -50,33 +50,19 @@
       <head>
           <meta charset="UTF-8">
           <meta name="viewport" content="width=device-width, initial-scale=1.0">
-          <title>DebugU - Metodología Educativa</title>
-          <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
+          <title>DebugU - Características</title>
+          <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
           <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
           <style>
-              :root {
-                  --primary: #2c3e50;
-                  --secondary: #3498db;
-                  --accent: #e74c3c;
-                  --light: #ecf0f1;
-                  --dark: #2c3e50;
-                  --gray: #95a5a6;
-                  --light-gray: #f8f9fa;
-              }
-              
-              body {
-                  font-family: 'Inter', sans-serif;
-                  line-height: 1.8;
-                  color: var(--dark);
-                  background-color: #fff;
-                  margin: 0;
-                  padding: 0;
+              .features {
+                  padding: 80px 0;
+                  background-color: #f9fafc;
               }
               
               .container {
                   max-width: 1200px;
                   margin: 0 auto;
-                  padding: 40px 20px;
+                  padding: 0 20px;
               }
               
               .section-title {
@@ -85,83 +71,84 @@
               }
               
               .section-title h2 {
-                  font-size: 2.4rem;
-                  font-weight: 700;
-                  color: var(--primary);
+                  font-size: 2.5rem;
+                  color: #2c3e50;
                   margin-bottom: 15px;
-                  position: relative;
-                  display: inline-block;
-              }
-              
-              .section-title h2:after {
-                  content: '';
-                  position: absolute;
-                  width: 60%;
-                  height: 3px;
-                  background: var(--secondary);
-                  bottom: -10px;
-                  left: 20%;
+                  font-weight: 700;
               }
               
               .section-title p {
-                  color: var(--gray);
+                  color: #7f8c8d;
                   font-size: 1.1rem;
                   max-width: 700px;
                   margin: 0 auto;
+                  line-height: 1.6;
               }
               
               .features-grid {
                   display: grid;
-                  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+                  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
                   gap: 30px;
               }
               
               .feature-card {
-                  background: var(--light-gray);
-                  border-radius: 8px;
-                  padding: 30px;
-                  transition: transform 0.3s ease, box-shadow 0.3s ease;
-                  border-left: 4px solid var(--secondary);
+                  background: white;
+                  border-radius: 12px;
+                  padding: 35px;
+                  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+                  transition: all 0.3s ease;
+                  border: 1px solid rgba(0,0,0,0.03);
                   position: relative;
                   overflow: hidden;
               }
               
               .feature-card:hover {
                   transform: translateY(-5px);
-                  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+                  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
               }
               
               .feature-icon {
-                  font-size: 2.5rem;
-                  color: var(--secondary);
-                  margin-bottom: 20px;
+                  width: 70px;
+                  height: 70px;
+                  background: #f1f5fe;
+                  border-radius: 16px;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  margin-bottom: 25px;
+                  color: #6c5ce7;
+                  font-size: 1.8rem;
               }
               
               .feature-card h3 {
-                  font-size: 1.4rem;
-                  font-weight: 600;
-                  color: var(--primary);
+                  font-size: 1.3rem;
+                  color: #2c3e50;
                   margin-bottom: 15px;
-                  font-family: 'Source Code Pro', monospace;
+                  font-weight: 700;
               }
               
               .feature-card p {
-                  color: var(--gray);
+                  color: #636e72;
+                  line-height: 1.7;
                   margin-bottom: 0;
-                  font-size: 1rem;
               }
               
-              .feature-card:nth-child(1) .feature-icon { color: #3498db; }
-              .feature-card:nth-child(2) .feature-icon { color: #2ecc71; }
-              .feature-card:nth-child(3) .feature-icon { color: #9b59b6; }
-              .feature-card:nth-child(4) .feature-icon { color: #f1c40f; }
-              .feature-card:nth-child(5) .feature-icon { color: #e67e22; }
-              .feature-card:nth-child(6) .feature-icon { color: #e74c3c; }
+              /* Animaciones originales mantenidas */
+              .fade-in {
+                  animation: fadeIn 0.5s ease forwards;
+              }
               
-              @media (max-width: 768px) {
-                  .features-grid {
-                      grid-template-columns: 1fr;
-                  }
+              .delay-1 {
+                  animation-delay: 0.2s;
+              }
+              
+              .delay-2 {
+                  animation-delay: 0.4s;
+              }
+              
+              @keyframes fadeIn {
+                  from { opacity: 0; transform: translateY(20px); }
+                  to { opacity: 1; transform: translateY(0); }
               }
           </style>
       </head>
@@ -169,39 +156,39 @@
           <section class="features" id="features">
               <div class="container">
                   <div class="section-title">
-                      <h2>Metodología Educativa Avanzada</h2>
-                      <p>Un enfoque pedagógico basado en investigación  que combina gamificación estratégica con adquisición de competencias en programación.</p>
+                      <h2>La nueva forma de aprender a programar</h2>
+                      <p>DebugU combina lo mejor de la educación con la gamificación para crear una experiencia de aprendizaje única y efectiva.</p>
                   </div>
                   <div class="features-grid">
-                      <div class="feature-card">
-                          <div class="feature-icon"><i class="fas fa-laptop-code"></i></div>
+                      <div class="feature-card fade-in">
+                          <div class="feature-icon" id="icon-1"><i class="fas fa-laptop-code"></i></div>
                           <h3>Proyectos Gamificados</h3>
-                          <p>Cada ejercicio está diseñado como una misión con objetivos pedagógicos específicos, implementando mecánicas de juego para reforzar el aprendizaje activo.</p>
+                          <p>Cada ejercicio es una misión con objetivos específicos. Gana puntos, sube de nivel y consigue medallas por tus logros.</p>
                       </div>
-                      <div class="feature-card">
-                          <div class="feature-icon"><i class="fas fa-project-diagram"></i></div>
+                      <div class="feature-card fade-in delay-1">
+                          <div class="feature-icon" id="icon-2"><i class="fas fa-project-diagram"></i></div>
                           <h3>Portafolio Interactivo</h3>
-                          <p>Sistema de seguimiento visual que documenta el progreso cognitivo, permitiendo la metacognición y evaluación formativa continua.</p>
+                          <p>Muestra tu progreso en tiempo real con un portafolio visual que crece con cada proyecto completado.</p>
                       </div>
-                      <div class="feature-card">
-                          <div class="feature-icon"><i class="fas fa-graduation-cap"></i></div>
+                      <div class="feature-card fade-in delay-2">
+                          <div class="feature-icon" id="icon-3"><i class="fas fa-graduation-cap"></i></div>
                           <h3>Lecciones por Niveles</h3>
-                          <p>Estructura curricular basada en la teoría de flujo (flow), con desafíos educativos escalables que mantienen el equilibrio entre habilidad y desafío.</p>
+                          <p>Aprende con lecciones estructuradas como desafíos educativos que desbloquean nuevos contenidos.</p>
                       </div>
-                      <div class="feature-card">
-                          <div class="feature-icon"><i class="fas fa-fire"></i></div>
+                      <div class="feature-card fade-in">
+                          <div class="feature-icon" id="icon-4"><i class="fas fa-fire"></i></div>
                           <h3>Rachas de Aprendizaje</h3>
-                          <p>Mecanismo de refuerzo positivo basado en la teoría de formación de hábitos, promoviendo la práctica consistente mediante recompensas intrínsecas.</p>
+                          <p>Mantén tu motivación con recompensas por constancia diaria o semanal en tu práctica de programación.</p>
                       </div>
-                      <div class="feature-card">
-                          <div class="feature-icon"><i class="fas fa-trophy"></i></div>
-                          <h3>Rankings Académicos</h3>
-                          <p>Sistema de comparación normativa que fomenta la mejora continua mediante la competencia colaborativa, fundamentado en teorías de motivación social.</p>
+                      <div class="feature-card fade-in delay-1">
+                          <div class="feature-icon" id="icon-5"><i class="fas fa-trophy"></i></div>
+                          <h3>Rankings y Competencia</h3>
+                          <p>Compara tu progreso con otros estudiantes en rankings amistosos que fomentan la mejora constante.</p>
                       </div>
-                      <div class="feature-card">
-                          <div class="feature-icon"><i class="fas fa-robot"></i></div>
+                      <div class="feature-card fade-in delay-2">
+                          <div class="feature-icon" id="icon-6"><i class="fas fa-robot"></i></div>
                           <h3>Feedback Inteligente</h3>
-                          <p>Mecanismo de retroalimentación adaptativa que identifica patrones de error comunes y proporciona correcciones contextualizadas basadas en aprendizaje automático.</p>
+                          <p>Recibe retroalimentación inmediata y personalizada sobre tu código para aprender de tus errores.</p>
                       </div>
                   </div>
               </div>
