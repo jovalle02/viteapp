@@ -391,7 +391,8 @@
                 name="userEmail"
                 placeholder="Tu correo electrónico" 
                 required
-                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+                title="Por favor ingresa un correo válido (ejemplo: usuario@dominio.com)"
                 aria-required="true"
               >
               <span class="validation-message" aria-live="polite"></span>
@@ -406,57 +407,68 @@
       </section>
       
       <script type="module">
-        // Implementación profesional con validación y envío seguro
-        document.getElementById('betaForm').addEventListener('submit', async (e) => {
-          e.preventDefault();
-          
-          const form = e.target;
-          const emailInput = form.elements.userEmail;
+        document.addEventListener('DOMContentLoaded', () => {
+          const form = document.getElementById('betaForm');
+          const emailInput = document.getElementById('userEmail');
           const validationMessage = form.querySelector('.validation-message');
-          
-          // Validación profesional
-          if (!form.checkValidity()) {
-            emailInput.classList.add('invalid');
-            validationMessage.textContent = 'Por favor ingresa un correo electrónico válido';
-            validationMessage.focus();
-            return;
-          }
-          
-          try {
-            // Deshabilitar botón durante el envío
-            const submitButton = form.querySelector('button[type="submit"]');
-            submitButton.disabled = true;
-            submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Procesando...';
+      
+          // Validación en tiempo real
+          emailInput.addEventListener('input', () => {
+            if (emailInput.validity.valid) {
+              emailInput.classList.remove('invalid');
+              validationMessage.textContent = '';
+            }
+          });
+      
+          // Envío profesional
+          form.addEventListener('submit', async (e) => {
+            e.preventDefault();
             
-            // Envío seguro a backend (ejemplo con Fetch API)
-            const response = await fetch('https://api.debugu.com/beta-signup', {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-              },
-              body: JSON.stringify({
-                email: emailInput.value,
-                source: 'landing_page',
-                timestamp: new Date().toISOString()
-              })
+            // Validación
+            if (!form.checkValidity()) {
+              emailInput.classList.add('invalid');
+              validationMessage.textContent = 'Por favor ingresa un correo válido (ejemplo: usuario@dominio.com)';
+              emailInput.focus();
+              return;
+            }
+      
+            try {
+              // Feedback visual durante envío
+              const submitButton = form.querySelector('button[type="submit"]');
+              submitButton.disabled = true;
+              submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Procesando...';
+      
+              // Simulación de envío a backend (reemplaza con tu API real)
+              const response = await mockApiCall(emailInput.value);
+      
+              // Éxito
+              form.innerHTML = `
+                <div class="success-message" role="alert">
+                  <i class="fas fa-check-circle"></i>
+                  <h3>¡Gracias por unirte!</h3>
+                  <p>Te hemos enviado un correo a <strong>${emailInput.value}</strong> con los próximos pasos.</p>
+                </div>
+              `;
+      
+            } catch (error) {
+              // Manejo de errores
+              console.error('Error:', error);
+              validationMessage.textContent = 'Error al enviar. Por favor inténtalo más tarde.';
+              form.querySelector('button[type="submit"]').disabled = false;
+              form.querySelector('button[type="submit"]').innerHTML = '<i class="fas fa-paper-plane"></i> <span>Unirme a la beta</span>';
+            }
+          });
+      
+          // Simulador de API (elimínalo en producción)
+          async function mockApiCall(email) {
+            return new Promise((resolve, reject) => {
+              setTimeout(() => {
+                // Simula un 10% de error aleatorio para pruebas
+                Math.random() > 0.1 ? 
+                  resolve({ status: 200 }) : 
+                  reject(new Error('Error simulado del servidor'));
+              }, 1500);
             });
-            
-            if (!response.ok) throw new Error('Error en el servidor');
-            
-            // Éxito - Mostrar feedback al usuario
-            form.innerHTML = `
-              <div class="success-message" role="alert">
-                <i class="fas fa-check-circle"></i>
-                <h3>¡Gracias por unirte!</h3>
-                <p>Te hemos enviado un correo de confirmación a <strong>${emailInput.value}</strong>.</p>
-              </div>
-            `;
-            
-          } catch (error) {
-            // Manejo profesional de errores
-            console.error('Error:', error);
-            validationMessage.textContent = 'Ocurrió un error. Por favor inténtalo nuevamente.';
-            validationMessage.focus();
           }
         });
       </script>
