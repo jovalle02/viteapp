@@ -372,85 +372,68 @@
     </section>
 
 
-    <section class="beta-signup" id="beta-signup">
-        <div class="container">
-          <h2>¿Quieres unirte a la beta de DebugU?</h2>
-          <p>Déjanos tu correo y serás uno de los primeros en recibir acceso exclusivo.</p>
-          
-          <form 
-            action="https://formsubmit.co/estivensuarez2003@gmail.com" 
-            method="POST"
-          >
-            <!-- Campo obligatorio -->
-            <input 
-              type="email" 
-              name="email" 
-              placeholder="tu@correo.com" 
-              required
-              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-            >
-            
-            <!-- Configuración del correo -->
-            <input type="hidden" name="_subject" value="¡Nuevo registro en DebugU!">
-            <input type="hidden" name="_autoresponse" value="BIENVENIDO A DEBUGU
+<!-- FORMULARIO DEBUGU - VERSIÓN SIMPLIFICADA -->
+<section class="beta-signup">
+    <div class="container">
+      <h2>¿Quieres unirte a la beta?</h2>
       
-      Gracias por registrarte en nuestra beta. 
-      
-      Esto es lo que obtendrás:
-      - Acceso prioritario a la plataforma
-      - 100 puntos de experiencia iniciales
-
-      
-      Tu cuenta estará activa antes de 48 horas. 
-      
-      ¿Preguntas? Responde a este correo.
-      
-      Equipo DebugU">
-            <input type="hidden" name="_template" value="basic">
-            
-            <!-- Evita spam -->
-            <input type="text" name="_honey" style="display:none">
-            
-            <button type="submit">
-              <i class="fas fa-paper-plane"></i> Unirme a la beta
-            </button>
-          </form>
-        </div>
-      </section>
-      
-      <style>
-        .beta-signup {
-          max-width: 500px;
-          margin: 0 auto;
-          padding: 20px;
-          text-align: center;
-        }
+      <!-- FORMULARIO QUE ENVÍA DIRECTAMENTE A TU CORREO -->
+      <form 
+        action="https://formsubmit.co/estivensuarez2003@gmail.com" 
+        method="POST"
+      >
+        <!-- Campo de email (único campo obligatorio) -->
+        <input 
+          type="email" 
+          name="email" 
+          placeholder="tucorreo@gmail.com" 
+          required
+        >
         
-        input[type="email"] {
-          width: 100%;
-          padding: 10px;
-          margin: 10px 0;
-          border: 1px solid #ddd;
-        }
-        
-        button {
-          background: #2b73b7;
-          color: white;
-          border: none;
-          padding: 10px 20px;
-          cursor: pointer;
-        }
-      </style>
-      
-      <script>
+        <!-- CONFIGURACIÓN DEL CORREO AUTOMÁTICO -->
+        <input type="hidden" name="_subject" value="¡Bienvenido a DebugU!">
+        <input type="hidden" name="_autoresponse" value="Hola futuro programador 👋
+  
+  ¡Gracias por unirte a la beta de DebugU!
+  
+  En 24 horas recibirás:
+  ✅ Tu acceso a la plataforma
+  ✅ 100 puntos de regalo
+  ✅ Guía de Python Básico
+  
+  Mientras tanto:
+  👉 Sigue nuestro Instagram @DebugU
+  👉 Únete al grupo de Telegram: t.me/debugu_comunidad
+  
+  ¡Nos vemos dentro!
+  Equipo DebugU 🐍">
+  
+        <!-- Botón de envío -->
+        <button type="submit">
+          <i class="fas fa-paper-plane"></i> Quiero mi acceso
+        </button>
+      </form>
+    </div>
+  </section>
+  
 
-        document.querySelector('form').addEventListener('submit', function(e) {
-          if (!this.checkValidity()) {
-            e.preventDefault();
-            alert('Por favor ingresa un correo válido');
-          }
-        });
-      </script>
+  <style>
+    form {
+      display: flex;
+      gap: 10px;
+    }
+    input {
+      padding: 10px;
+      flex-grow: 1;
+    }
+    button {
+      background: #2b73b7;
+      color: white;
+      border: none;
+      padding: 0 20px;
+      cursor: pointer;
+    }
+  </style>
 
 <!-- Footer -->
 <footer>
